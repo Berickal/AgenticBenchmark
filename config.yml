@@ -1,0 +1,140 @@
+# Configuration file for Benchmark Factory Multi-Agent Framework
+
+# Task Configuration
+task:
+  # Use a predefined task name: "CODE_SYNTHESIS", "CODE_REPAIR", "CODE_SUMMARY", "MMLU"
+  # Or set to "custom" and define custom task below
+  name: "CODE_SYNTHESIS"  # Options: CODE_SYNTHESIS, CODE_REPAIR, CODE_SUMMARY, MMLU, custom
+  
+  # Custom task definition (only used if name is "custom")
+  custom:
+    description: ""
+    constraints: []
+    input_space_definition: ""
+    output_space_definition: ""
+
+# Model Configuration
+model:
+  # Model name (Ollama model name, HuggingFace model ID, or OpenRouter model ID)
+  name: "mistralai/mistral-nemo"  # e.g., "llama3.1", "mistral:latest", "microsoft/phi-2", "openai/gpt-4o"
+  
+  # LLM backend: "ollama", "huggingface", or "openrouter"
+  backend: "openrouter"
+  
+  # Ollama-specific settings (only used if backend is "ollama")
+  ollama:
+    base_url: "http://localhost:11434"
+    timeout: 120
+  
+  # OpenRouter-specific settings (only used if backend is "openrouter")
+  openrouter:
+    # API key (optional - will use OPENAI_API_KEY or OPENROUTER_API_KEY env var if not provided)
+    api_key: "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"  # Set your OpenRouter API key here, or use environment variable
+    base_url: "https://openrouter.ai/api/v1"
+    timeout: 120
+
+# Dataset Configuration
+dataset:
+  # Dataset source: "huggingface" or "local"
+  source: "huggingface"
+  
+  # HuggingFace dataset configuration
+  huggingface:
+    # Dataset name (e.g., "Muennighoff/quixbugs", "cais/mmlu")
+    name: "google-research-datasets/mbpp"
+    
+    # Dataset configuration (optional, e.g., "all" for MMLU)
+    config: "full"
+    
+    # Split to use (e.g., "train", "dev", "test")
+    split: "test"
+    
+    # Limit number of samples (optional, null for all)
+    limit: null
+  
+  # Local dataset configuration (only used if source is "local")
+  local:
+    # Path to JSON file containing dataset
+    path: ""
+    
+    # JSON structure: "list" (list of samples) or "dict" (dict with samples key)
+    structure: "list"
+    
+    # Key containing samples if structure is "dict"
+    samples_key: "samples"
+  
+  # Dataset mapping function
+  # This defines how to map raw dataset items to BenchmarkSample objects
+  # Available presets: "quixbugs", "mmlu", "mbpp", "custom"
+  mapping: "mbpp"  # Options: quixbugs, mmlu, mbpp, custom
+  
+  # Custom mapping (only used if mapping is "custom")
+  # Define input_key, output_key, and metadata_keys
+  custom_mapping:
+    input_key: "input"
+    output_key: "output"
+    metadata_keys: []  # List of keys to include in metadata
+  
+  # Dataset metadata
+  benchmark_name: "MBPP"
+  benchmark_description: "The benchmark consists of around 1,000 crowd-sourced Python programming problems, designed to be solvable by entry level programmers, covering programming fundamentals, standard library functionality, and so on. Each problem consists of a task description, code solution and 3 automated test cases."
+
+# Orchestrator Configuration
+orchestrator:
+  # Maximum iterations for feedback loops
+  max_iterations: 3
+  
+  # Maximum retries per sample to generate valid transformation
+  max_retries_per_sample: 5
+  
+  # Use per-sample transformation rules (True) or general rules (False)
+  use_per_sample_rules: true
+
+# Sampling Configuration
+sampling:
+  # Sampling strategy: "random", "diverse", or "stratified"
+  strategy: "random"
+  
+  # Fixed number of samples for analysis (null to use ratio)
+  sample_size: 5
+  
+  # Ratio of benchmark to sample for analysis (used if sample_size is null)
+  sample_ratio: 0.1
+
+# Output Configuration
+output:
+  # Output directory for generated files
+  directory: "data/"
+  
+  # Output filename pattern
+  # Available placeholders: {dataset_name}, {model_name}, {task_name}, {timestamp}, {run_id}
+  filename_pattern: "{dataset_name}_{model_name}_FULL_BENCHMARK_{run_id}.json"
+  
+  # Number of valid modified inputs to generate (null for all samples)
+  num_outputs: null
+  
+  # Run ID (incremented automatically if not specified)
+  run_id: 0
+
+# Parallel Processing Configuration (for generate_parallel.py)
+parallel:
+  # Enable parallel processing (set to false to disable)
+  enabled: true
+  
+  # Number of parallel workers (null for auto = CPU count)
+  workers: null
+  
+  # Number of samples per chunk (null for auto-calculation)
+  chunk_size: null
+  
+  # Use threads instead of processes (for I/O-bound tasks)
+  use_threads: false
+
+# Logging Configuration
+logging:
+  # Log level: "DEBUG", "INFO", "WARNING", "ERROR"
+  level: "INFO"
+  
+  # Log to file (null to disable)
+  log_file: null
+

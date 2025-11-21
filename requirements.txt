@@ -1,0 +1,5 @@
+besser-agentic-framework[llms,extras]>=4.0.0
+ollama>=0.1.0
+pyyaml>=6.0.0
+datasets>=2.0.0
+openai>=1.0.0

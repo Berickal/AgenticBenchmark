@@ -31,7 +31,7 @@ from src.models.benchmark import Benchmark, BenchmarkSample, ModifiedInput
 from src.orchestrator import BenchmarkOrchestrator
 
 # Import predefined tasks
-from notebook.tasks import (
+from examples.tasks import (
     CODE_SYNTHESIS_TASK,
     CODE_REPAIR_TASK,
     CODE_SUMMARY_TASK,

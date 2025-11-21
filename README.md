@@ -506,12 +506,9 @@ BenchFactory_MA/
 │   └── utils/                # Utilities
 │       └── besser_integration.py
 │
-├── notebook/                  # Notebooks and tasks
-│   ├── tasks.py              # Predefined tasks
-│   └── generation/          # Output directory
-│
 ├── examples/                  # Example scripts
 │   └── example_usage.py
+|   └── tasks.py
 │
 ├── evaluation/               # Evaluation utilities
 │   ├── code_utils.py

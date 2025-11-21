@@ -507,36 +507,4 @@ BenchFactory_MA/
     └── verify_setup.py
 ```
 
-## Methodology
 
-The framework implements a cyclical process with feedback loops:
-
-1. **Benchmark** → **Sampling**: Extract representative samples
-2. **Task** + **Sampling** → **Analysis**: Enhance constraints and input space definition
-3. **Analysis** → **Transformation Rule Design**: Create transformation rules
-4. **Transformation Rule** → **Application**: Generate modified inputs
-5. **Application** → **Output Update**: Determine if outputs should change
-6. **Application** → **Validation**: Check validity and complexity
-7. **Validation** → **Analysis** (feedback loop): Refine constraints
-8. **Validation** → **Transformation Rule** (feedback loop): Improve rules
-
-## BESSER Integration
-
-The framework integrates with the [BESSER Agentic Framework](https://besser-agentic-framework.readthedocs.io/latest/) for enhanced agent capabilities:
-
-- **Automatic Integration**: Works seamlessly when BESSER is installed
-- **Agent Wrapping**: Optional BESSER agent wrapping for state management
-- **Multi-Agent Coordination**: Leverage BESSER's coordination features
-
-See `src/utils/besser_integration.py` for advanced BESSER integration options.
-
-## Performance Tips
-
-1. **Use Parallel Processing**: For large benchmarks (>50 samples), use `generate_parallel.py`
-2. **Optimize Chunk Size**: Balance between too small (overhead) and too large (memory)
-3. **Choose Right Backend**: 
-   - Ollama: Best for privacy, no API costs
-   - OpenRouter: Best for access to multiple models, faster inference
-   - HuggingFace: Best for local fine-tuned models
-4. **Adjust Sampling**: Reduce `sample_size` for faster analysis phase
-5. **Limit Outputs**: Use `num_outputs` to generate only what you need

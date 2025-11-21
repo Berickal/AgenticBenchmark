@@ -1,4 +1,4 @@
-# Benchmark Factory Multi-Agent Framework
+# AgenticBenchmarks Multi-Agent Framework
 
 A multi-agent framework designed to extend the lifespan and reliability of static benchmarks by dynamically modifying them. The framework generates inputs that are similar in complexity but different in syntax and semantics, ensuring that model performance assessment reflects actual capabilities rather than memorization or data leakage.
 
@@ -29,7 +29,7 @@ With feedback loops connecting:
 
 ### Prerequisites
 
-1. Install [Ollama](https://ollama.ai/)
+1. Install [Ollama](https://ollama.ai/) (Optional)
 2. Pull a model (e.g., `ollama pull llama3.1`)
 3. Python 3.8 or higher
 

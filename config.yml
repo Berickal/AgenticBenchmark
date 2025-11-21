@@ -29,7 +29,7 @@ model:
   # OpenRouter-specific settings (only used if backend is "openrouter")
   openrouter:
     # API key (optional - will use OPENAI_API_KEY or OPENROUTER_API_KEY env var if not provided)
-    api_key: "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"  # Set your OpenRouter API key here, or use environment variable
+    api_key: "SETUP_KEY_HERE"  # Set your OpenRouter API key here, or use environment variable
     base_url: "https://openrouter.ai/api/v1"
     timeout: 120
 

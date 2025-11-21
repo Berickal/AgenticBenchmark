@@ -2,18 +2,6 @@
 
 A multi-agent framework designed to extend the lifespan and reliability of static benchmarks by dynamically modifying them. The framework generates inputs that are similar in complexity but different in syntax and semantics, ensuring that model performance assessment reflects actual capabilities rather than memorization or data leakage.
 
-## Features
-
-- **Multi-Agent Architecture**: Specialized agents for each step of the transformation process
-- **Multiple LLM Backends**: Support for Ollama (local), HuggingFace (via BESSER), and OpenRouter (cloud)
-- **Parallel Processing**: Built-in parallel processing for faster benchmark transformation
-- **Configuration-Based**: YAML configuration file for easy setup and customization
-- **Iterative Refinement**: Feedback loops for continuous improvement of transformations
-- **Complexity Preservation**: Ensures generated inputs maintain similar complexity levels
-- **Constraint Enforcement**: Validates all transformations respect task input space
-- **Predefined Tasks**: Ready-to-use task definitions for common benchmark types
-- **Dataset Support**: Load datasets from HuggingFace or local JSON files
-
 ## Architecture
 
 The framework implements the following methodology:

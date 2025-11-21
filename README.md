@@ -42,7 +42,7 @@ With feedback loops connecting:
 
 ```bash
 # Clone the repository (if applicable)
-# cd BenchFactory_MA
+# cd AgenticBenchmark
 
 # Install dependencies
 pip install -r requirements.txt
